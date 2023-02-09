@@ -1,10 +1,11 @@
 import mysql from 'mysql';
-
+import * as dotenv from 'dotenv'
+dotenv.config();
 
 export const sql = mysql.createConnection({
-    host: "mysql-container",
-    user: "root",
-    password: "gg1234",
-    database: "docker_workshop",
-    port: 3306
+    host: String(process.env.API_HOST),
+    user: String(process.env.API_USER),
+    password: String(process.env.API_PASSWORD),
+    database: String(process.env.DATABASE),
+    port: String(process.env.HOST_PORT)
 })

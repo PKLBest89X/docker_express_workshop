@@ -1,11 +1,14 @@
+import * as dotenv from 'dotenv'
+dotenv.config();
 import express from "express";
 import { sql } from './configs/dbConfig.js'
 
 // <----------- routes -------------->
 import userRoute from './routes/user.js';
 
+
 const server = express();
-const port = process.env.PORT || 2000;
+const port = String(process.env.PORT) || 2000;
 
 server.use(express.json());
 
