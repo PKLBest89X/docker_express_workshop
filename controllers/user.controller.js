@@ -11,10 +11,7 @@ export const getUsers = (req, res) => {
 
 export const addUser = (req, res) => {
     const { name, surname } = req.body;
-    var values = [
-        [name, surname]
-      ];
-    sql.query("insert into tb_user(name, surname) VALUES ?", [values], (err, result) => {
+    sql.query(`insert into tb_user(name, surname) VALUES (name='${name}', surname='${surname}')`, (err, result) => {
         if (err) return res.sendStatus(400);
         return res.sendStatus(201)
     })
